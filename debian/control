@@ -1,0 +1,14 @@
+Package: internal-dns
+Version: 1.0-1
+Section: base
+Priority: optional
+Architecture: all
+Maintainer: Matei Busui <matei@busui.ro>
+Depends: dnsmasq, dhcp-listener, sed 
+Description: DNS Server
+ Uses dnsmasq for dns server
+ Uses dhcp-listener to listen for
+ new devices on the network and
+ adds them to the dns records
+ Provides CLI for CRUD operations
+ on the dns records
