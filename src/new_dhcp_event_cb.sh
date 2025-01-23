@@ -4,7 +4,7 @@ host="$1"
 ip="$2"
 [ -z "$host" ] || [ -z "$ip" ] && exit
 
-LOCK=/tmp/aware-dns-server-lock
+LOCK=/tmp/internal-dns-lock
 
 while ! mkdir $LOCK  2>/dev/null; do sleep 0.01; done
 sed -i '/# EnablePrinting/,$ {/'"$host".aici'/d}' /etc/hosts
