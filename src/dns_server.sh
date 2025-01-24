@@ -10,11 +10,13 @@ CACHE="/tmp/dns_serv.hosts"
 validate_sed_arg() {
 	local data="$1"
 	local delim="${2-/}"
+	# shellcheck disable=SC2001
 	sed 's@['"$delim"'.]@\\&@g' <<< "$data"
 }
 
 delete_dns_record() {
-	local host="$(validate_sed_arg $1)"
+	local host
+	host="$(validate_sed_arg "$1")"
 	local db="$2"
 	[ -n "$host" ] && [ -f "$db" ] || return 1
 	sed -i "$SED_LIMITS"' {/'"$host"'$/d}' "$db"
